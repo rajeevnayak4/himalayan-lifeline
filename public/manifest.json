@@ -1,0 +1,17 @@
+{
+  "name": "Himalayan Lifeline — Emergency SOS & Mountain Mesh",
+  "short_name": "HimalayanSOS",
+  "description": "Off-grid crowd-sourced mountain distress network for trekkers and responders in Nepal Himalayas",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090d16",
+  "theme_color": "#dc2626",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

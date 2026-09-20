@@ -1,0 +1,91 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id               String      @id @default(cuid())
+  name             String
+  phone            String
+  role             String      // "trekker" | "guide" | "lodge_owner" | "villager" | "rescue_coordinator"
+  lang             String      @default("en") // "en" | "ne" | "hi"
+  emergencyContact String?
+  trekRoute        String?     // e.g. "Lukla -> Namche -> Dingboche -> EBC"
+  lastLat          Float?
+  lastLng          Float?
+  lastAltitude     Float?
+  lastPingAt       DateTime?
+  isOnline         Boolean     @default(true)
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+
+  alerts           SOSAlert[]  @relation("VictimAlerts")
+  responses        Response[]  @relation("ResponderResponses")
+  checkins         Checkin[]
+}
+
+model SOSAlert {
+  id              String      @id @default(cuid())
+  victimId        String
+  victim          User        @relation("VictimAlerts", fields: [victimId], references: [id], onDelete: Cascade)
+  lat             Float
+  lng             Float
+  altitude        Float?
+  locationName    String?     // e.g. "Lobuche Pass (4,940m)"
+  status          String      @default("active") // "active" | "responding" | "resolved" | "false_alarm"
+  injuryType      String      @default("other") // "fall_fracture" | "altitude_sickness" | "hypothermia" | "lost_avalanche" | "other"
+  message         String?
+  audioBase64     String?
+  isOfflineQueued Boolean     @default(false)
+  hopCount        Int         @default(0)
+  batteryLevel    Int?        @default(78)
+  createdAt       DateTime    @default(now())
+  resolvedAt      DateTime?
+
+  responses       Response[]
+  relayLogs       RelayLog[]
+}
+
+model Response {
+  id          String    @id @default(cuid())
+  alertId     String
+  alert       SOSAlert  @relation(fields: [alertId], references: [id], onDelete: Cascade)
+  responderId String
+  responder   User      @relation("ResponderResponses", fields: [responderId], references: [id], onDelete: Cascade)
+  status      String    @default("acknowledged") // "acknowledged" | "en_route" | "arrived"
+  etaMinutes  Int?
+  message     String?
+  audioBase64 String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model RelayLog {
+  id          String    @id @default(cuid())
+  alertId     String
+  alert       SOSAlert  @relation(fields: [alertId], references: [id], onDelete: Cascade)
+  hopDeviceId String
+  hopName     String
+  hopType     String    // "trekker_phone" | "solar_mesh_beacon" | "lodge_repeater" | "rescue_gateway"
+  rssi        Int       // e.g. -76 (dBm)
+  lat         Float
+  lng         Float
+  altitude    Float?
+  batteryPct  Int?
+  hoppedAt    DateTime  @default(now())
+}
+
+model Checkin {
+  id          String    @id @default(cuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lat         Float
+  lng         Float
+  altitude    Float?
+  batteryPct  Int?
+  timestamp   DateTime  @default(now())
+}
