@@ -1,4 +1,4 @@
-# 🏔️ Himalayan Lifeline (हिमालयन लाइफलाइन)
+# 🏔️ Jiban Dan (हिमालयन लाइफलाइन)
 ### Off-Grid Mountain Emergency SOS & BLE Mesh Rescue Network for the Nepal Himalayas
 
 > **Hackathon MVP Build**: Production-grade Next.js 16+ App Router, TypeScript, Tailwind CSS, Prisma (SQLite zero-setup / PostgreSQL PostGIS ready), Leaflet OpenStreetMap, IndexedDB Offline Queuing, Web Audio API Siren, Web Speech API TTS (Nepali/Hindi/English), and Simulated BLE Mesh Relay with real-time packet hop visualization.
@@ -78,7 +78,7 @@ Traditional flat-earth distance formulas fail in the Himalayas, where two points
 
 ## 🌐 Multi-Language (i18n) & Low-Literacy Design
 
-Mountain accidents often happen in freezing conditions, blinding blizzards, or with local porters and yak drivers who may have limited literacy. Himalayan Lifeline provides:
+Mountain accidents often happen in freezing conditions, blinding blizzards, or with local porters and yak drivers who may have limited literacy. Jiban Dan provides:
 - Giant touch targets (56px+ height) usable with thick mountaineering gloves.
 - Pictorial emergency condition cards (fractured bone, mountain altitude sickness, hypothermia, avalanche).
 - Instant tri-lingual dictionary: English, Nepali (नेपाली), and Hindi (हिन्दी).

@@ -67,7 +67,7 @@ export default async function HistoryPage() {
           {title}
         </h1>
         <p className="text-slate-400 text-sm">
-          Historical log of your interactions within the Himalayan Lifeline network.
+          Historical log of your interactions within the Jiban Dan network.
         </p>
       </div>
 
@@ -97,13 +97,13 @@ export default async function HistoryPage() {
                       {item.details.replace("_", " ")}
                     </p>
                   </div>
-                  
+
                   <div className="text-right flex flex-col items-end gap-3">
                     <span className="text-xs font-mono text-slate-400">
                       {new Date(item.date).toLocaleString()}
                     </span>
                     {item.type === "alert" || item.type === "response" ? (
-                      <Link 
+                      <Link
                         href={`/alerts/${item.id}`}
                         className="text-xs font-bold text-purple-400 hover:text-purple-300 bg-purple-950/30 hover:bg-purple-900/40 px-3 py-1.5 rounded-lg border border-purple-900/50 transition-colors"
                       >

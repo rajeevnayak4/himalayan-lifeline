@@ -1,4 +1,4 @@
-// Himalayan Lifeline Offline Service Worker
+// Jiban Dan Offline Service Worker
 const CACHE_NAME = "himalayan-lifeline-v1";
 const OFFLINE_URLS = [
   "/",

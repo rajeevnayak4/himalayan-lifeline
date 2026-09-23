@@ -1,7 +1,7 @@
-# 🏔️ Himalayan Lifeline — Complete Platform User Guide
+# 🏔️ Jiban Dan — Complete Platform User Guide
 ### Off-Grid Mountain Emergency SOS & Mesh Rescue Network (Nepal Himalayas)
 
-Welcome to **Himalayan Lifeline** (हिमालयन लाइफलाइन) — a crowd-sourced emergency distress and search-and-rescue network purpose-built for low-connectivity alpine regions in Nepal (Khumbu Valley / Everest & Annapurna trails).
+Welcome to **Jiban Dan** (हिमालयन लाइफलाइन) — a crowd-sourced emergency distress and search-and-rescue network purpose-built for low-connectivity alpine regions in Nepal (Khumbu Valley / Everest & Annapurna trails).
 
 ---
 
@@ -25,7 +25,7 @@ Above Namche Bazaar (3,440m) on the Everest Base Camp trail, standard cellular c
 
 When a solo trekker slips on rocky scree near Lobuche Pass (4,940m) or develops High Altitude Pulmonary Edema (HAPE), traditional emergency apps fail completely because they depend on continuous cloud connectivity.
 
-**Himalayan Lifeline solves this through a four-tier resilience architecture:**
+**Jiban Dan solves this through a four-tier resilience architecture:**
 1. **One-Tap Emergency Distress Beacon**: Captures GPS coordinates, elevation, low-literacy injury icons, and a 10-second compressed voice note.
 2. **Offline IndexedDB Storage**: If no cellular signal is detected, the distress call is safely buffered in the browser's persistent database.
 3. **Simulated BLE Mesh Multi-Hop Relay**: Distress packets bounce peer-to-peer across nearby trekkers' smartphones and autonomous solar repeater beacons until reaching a connected satellite gateway.
@@ -219,4 +219,4 @@ Judges respect engineering integrity. Here is the exact technical breakdown:
 
 ---
 
-*Himalayan Lifeline — Built for the mountaineers, guides, and search-and-rescue teams of Nepal.*
+*Jiban Dan — Built for the mountaineers, guides, and search-and-rescue teams of Nepal.*

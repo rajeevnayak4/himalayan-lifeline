@@ -262,61 +262,64 @@ export default function AlertModal({
         )}
 
         {/* Small Tactical Map */}
-        <div className="min-h-[500px] rounded-xl overflow-hidden border border-slate-800 relative shadow-inner">
-          <HimalayanMap
-            center={[alert.lat, alert.lng]}
-            zoom={13}
-            className="w-full h-full"
-            markers={[
-              {
-                id: alert.id,
-                lat: alert.lat,
-                lng: alert.lng,
-                title: alert.victimName,
-                type: "victim"
-              },
-              {
-                id: "responder",
-                lat: 27.8920, // Mock gateway/responder coord (Dingboche)
-                lng: 86.8315,
-                title: "Your Location",
-                type: "responder"
-              }
-            ]}
-            meshHops={[{
-              fromLat: 27.8920,
-              fromLng: 86.8315,
-              toLat: alert.lat,
-              toLng: alert.lng,
-              fromName: "You",
-              toName: alert.victimName
-            }]}
-          />
-          <div className="absolute top-2 left-2 z-[400] bg-slate-950/80 px-2 py-1 rounded text-[10px] text-slate-200 font-bold border border-slate-800">
-            {alert.distanceKm ? `Distance: ~${alert.distanceKm}km` : "Calculating..."}
-          </div>
-        </div>
+        {/* <div className="h-[500px] rounded-xl overflow-hidden border border-slate-800 relative shadow-inner"> */}
+        <HimalayanMap
+          center={[alert.lat, alert.lng]}
+          zoom={13}
+          className="w-full h-[480px] rounded-2xl overflow-hidden shadow-2xl border border-slate-800"
 
-        {/* ETA Selector for Responder */}
-        <div className="bg-slate-900 p-4 rounded-xl border border-slate-800">
-          <span className="text-xs uppercase font-bold tracking-wider text-slate-400 block mb-2">
-            Select Your Estimated Response Time (Walking/Climbing):
-          </span>
-          <div className="grid grid-cols-4 gap-2">
-            {[15, 30, 45, 60].map((eta) => (
-              <button
-                key={eta}
-                onClick={() => setSelectedEta(eta)}
-                className={`py-2 px-2 rounded-lg text-xs font-bold transition-all ${selectedEta === eta
-                  ? "bg-emerald-600 text-white shadow-md shadow-emerald-950"
-                  : "bg-slate-800 text-slate-300 hover:bg-slate-700"
-                  }`}
-              >
-                {eta} min
-              </button>
-            ))}
-          </div>
+          markers={[
+            {
+
+
+              id: alert.id,
+              lat: alert.lat,
+              lng: alert.lng,
+              title: alert.victimName,
+              type: "victim"
+            },
+            {
+              id: "responder",
+              lat: 27.8920, // Mock gateway/responder coord (Dingboche)
+              lng: 86.8315,
+              title: "Your Location",
+              type: "responder"
+            }
+          ]}
+          meshHops={[{
+            fromLat: 27.8920,
+            fromLng: 86.8315,
+            toLat: alert.lat,
+            toLng: alert.lng,
+            fromName: "You",
+            toName: alert.victimName
+          }]}
+        />
+        <div className="absolute top-2 left-2 z-[400] bg-slate-950/80 px-2 py-1 rounded text-[10px] text-slate-200 font-bold border border-slate-800">
+          {alert.distanceKm ? `Distance: ~${alert.distanceKm}km` : "Calculating..."}
         </div>
+      </div>
+
+      {/* ETA Selector for Responder */}
+      <div className="bg-slate-900 p-4 rounded-xl border border-slate-800">
+        <span className="text-xs uppercase font-bold tracking-wider text-slate-400 block mb-2">
+          Select Your Estimated Response Time (Walking/Climbing):
+        </span>
+        <div className="grid grid-cols-4 gap-2">
+          {[15, 30, 45, 60].map((eta) => (
+            <button
+              key={eta}
+              onClick={() => setSelectedEta(eta)}
+              className={`py-2 px-2 rounded-lg text-xs font-bold transition-all ${selectedEta === eta
+                ? "bg-emerald-600 text-white shadow-md shadow-emerald-950"
+                : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+                }`}
+            >
+              {eta} min
+            </button>
+          ))}
+        </div>
+        {/* </div> */}
 
         {/* Rescuer Voice Note Recorder */}
         <div className="bg-slate-900 p-4 rounded-xl border border-slate-800">

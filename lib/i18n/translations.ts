@@ -8,7 +8,7 @@ export interface TranslationDict {
   roleLodge: string;
   roleVillager: string;
   roleRescue: string;
-  
+
   // Emergency Trigger
   sosButton: string;
   sosSubtext: string;
@@ -18,21 +18,21 @@ export interface TranslationDict {
   searchingResponders: string;
   respondersEnRoute: string;
   etaLabel: string;
-  
+
   // Offline & Mesh
   offlineWarning: string;
   offlineQueued: string;
   meshBroadcasting: string;
   meshRelayDesc: string;
   viewMeshPath: string;
-  
+
   // Injury Types
   injuryFall: string;
   injuryAltitude: string;
   injuryHypothermia: string;
   injuryAvalanche: string;
   injuryOther: string;
-  
+
   // Responder Actions
   newAlertHeader: string;
   iCanHelp: string;
@@ -41,7 +41,7 @@ export interface TranslationDict {
   notifyRescueTeam: string;
   listenAlert: string;
   stopAudio: string;
-  
+
   // Form / Info
   voiceNotePrompt: string;
   recordVoice: string;
@@ -58,7 +58,7 @@ export interface TranslationDict {
 
 export const translations: Record<Language, TranslationDict> = {
   en: {
-    appTitle: "Himalayan Lifeline",
+    appTitle: "Jiban Dan",
     tagline: "Off-Grid Mountain Emergency SOS & Mesh Rescue Network",
     roleTrekker: "Trekker / Climber",
     roleGuide: "Local Guide (Sherpa)",

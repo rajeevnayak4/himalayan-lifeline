@@ -61,7 +61,7 @@ const KHUMBU_TRAIL_MESH_NODES = [
 ];
 
 async function main() {
-  console.log("🏔️ Seeding Himalayan Lifeline database...");
+  console.log("🏔️ Seeding Jiban Dan database...");
 
   // 1. Clean previous data
   await prisma.relayLog.deleteMany({});

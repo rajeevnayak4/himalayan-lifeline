@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
       // Send initial connection packet
       const initData = JSON.stringify({
         type: "connected",
-        message: "Connected to Himalayan Lifeline Realtime Broadcast Stream",
+        message: "Connected to Jiban Dan Realtime Broadcast Stream",
         timestamp: new Date().toISOString(),
       });
       controller.enqueue(encoder.encode(`data: ${initData}\n\n`));

@@ -77,7 +77,7 @@ export default function HimalayanMap({
 
       // OpenStreetMap high-contrast / terrain tiles
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Himalayan Lifeline',
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Jiban Dan',
         maxZoom: 18,
       }).addTo(map);
 
@@ -238,7 +238,7 @@ export default function HimalayanMap({
   return (
     <div className={`relative ${className}`}>
       <div ref={mapContainerRef} className="w-full h-full z-0" />
-      
+
       {/* Map Legend Overlay */}
       <div className="absolute bottom-3 left-3 z-[10] bg-slate-900/90 backdrop-blur-md px-3 py-2 rounded-xl border border-slate-800 text-[11px] text-slate-300 flex flex-wrap gap-3 items-center shadow-lg">
         <div className="flex items-center gap-1.5">

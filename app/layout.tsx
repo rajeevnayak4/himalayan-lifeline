@@ -4,7 +4,7 @@ import Navbar from "@/components/ui/Navbar";
 import GlobalAlertListener from "@/components/ui/GlobalAlertListener";
 
 export const metadata: Metadata = {
-  title: "Himalayan Lifeline — Mountain Emergency SOS & Mesh Rescue Network",
+  title: "Jiban Dan — Mountain Emergency SOS & Mesh Rescue Network",
   description: "Crowd-sourced emergency SOS and simulated BLE mesh network for trekkers and responders in Nepal Himalayas (Khumbu, Everest, Annapurna).",
   manifest: "/manifest.json",
   appleWebApp: {

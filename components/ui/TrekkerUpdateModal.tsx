@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { CheckCircle, Clock, Volume2, ShieldCheck, MapPin } from "lucide-react";
 
 export interface TrekkerUpdatePayload {
@@ -20,20 +20,48 @@ interface TrekkerUpdateModalProps {
   onDismiss: () => void;
 }
 
+// Put your own licensed clip here, e.g. public/sounds/gorkhali-alert.mp3.
+// If it's missing or fails to load, we fall back to speech synthesis below.
+const ALERT_SOUND_SRC = '/alarm.mp3';
+const ALERT_SPOKEN_PHRASE = "Aaudai cha, Gorkhali Gorkhali";
+
 export default function TrekkerUpdateModal({ update, onDismiss }: TrekkerUpdateModalProps) {
   const [isVisible, setIsVisible] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    if (update) {
-      setIsVisible(true);
-      // Play a comforting ding sound instead of a loud siren
-      try {
-        const audio = new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=");
-        audio.play().catch(() => {});
-      } catch {}
-    } else {
+    if (!update) {
       setIsVisible(false);
+      return;
     }
+
+    setIsVisible(true);
+
+    const audio = new Audio(ALERT_SOUND_SRC);
+    audioRef.current = audio;
+
+    const speakFallback = () => {
+      if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+      try {
+        const utterance = new SpeechSynthesisUtterance(ALERT_SPOKEN_PHRASE);
+        utterance.lang = "ne-NP";
+        utterance.rate = 0.95;
+        window.speechSynthesis.speak(utterance);
+      } catch {
+        // Speech synthesis unavailable — silently skip
+      }
+    };
+
+    audio.addEventListener("error", speakFallback);
+    audio.play().catch(speakFallback);
+
+    return () => {
+      audio.pause();
+      audio.removeEventListener("error", speakFallback);
+      if (typeof window !== "undefined" && "speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
   }, [update]);
 
   if (!isVisible || !update) return null;
@@ -41,13 +69,13 @@ export default function TrekkerUpdateModal({ update, onDismiss }: TrekkerUpdateM
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6">
       {/* Dark overlay with blur */}
-      <div 
+      <div
         className="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity"
         onClick={onDismiss}
       />
 
       <div className="relative w-full max-w-md bg-slate-900 border-2 border-emerald-500 rounded-3xl shadow-2xl p-6 text-slate-100 flex flex-col gap-6 animate-in zoom-in-95 fade-in duration-300">
-        
+
         {/* Header Icon */}
         <div className="flex flex-col items-center text-center gap-3">
           <div className="w-20 h-20 rounded-full bg-emerald-500/20 flex items-center justify-center shadow-[0_0_30px_rgba(16,185,129,0.3)] animate-pulse">

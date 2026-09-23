@@ -31,7 +31,7 @@ export default function RegisterPage() {
     try {
       setIsLoading(true);
       setError("");
-      
+
       const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -39,13 +39,13 @@ export default function RegisterPage() {
       });
 
       const data = await res.json();
-      
+
       if (res.ok && data.success) {
         const role = data.user.role;
         if (role === "trekker") router.push("/sos");
         else if (role === "rescue_coordinator") router.push("/dashboard");
         else router.push("/alerts");
-        
+
         router.refresh();
       } else {
         setError(data.error || "Registration failed");
@@ -60,11 +60,11 @@ export default function RegisterPage() {
   return (
     <div className="flex-1 flex flex-col items-center justify-center px-4 py-12">
       <div className="w-full max-w-md space-y-8">
-        
+
         <div className="text-center">
           <ShieldAlert className="w-16 h-16 text-red-500 mx-auto" />
           <h2 className="mt-6 text-3xl font-extrabold text-white">Join the Network</h2>
-          <p className="mt-2 text-sm text-slate-400">Register your device for Himalayan Lifeline</p>
+          <p className="mt-2 text-sm text-slate-400">Register your device for Jiban Dan</p>
         </div>
 
         <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl space-y-6">
@@ -178,7 +178,7 @@ export default function RegisterPage() {
               {isLoading ? "Registering..." : "Create Account"}
             </button>
           </form>
-          
+
           <div className="text-center pt-4">
             <p className="text-xs text-slate-400">
               Already registered?{" "}
